@@ -7,9 +7,9 @@ import org.springframework.http.MediaType
 
 object MemberSteps {
 
-    const val email: String = "email@naver.com"
-    const val password: String = "password"
-    const val age: Int = 30
+    const val EMAIL: String = "email@naver.com"
+    const val PASSWORD: String = "password"
+    const val AGE: Int = 30
 
     fun `회원_생성_요청`(email: String, password: String, age: Int): ExtractableResponse<Response> {
 
