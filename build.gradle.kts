@@ -65,6 +65,13 @@ dependencies {
     //jgraph
     implementation("org.jgrapht:jgrapht-core:1.0.1")
 
+    // jwt
+    implementation("io.jsonwebtoken:jjwt:0.9.1")
+
+
+    // log
+    implementation("net.rakugakibox.spring.boot:logback-access-spring-boot-starter:2.7.1")
+
     //iamport
     implementation("com.github.iamport:iamport-rest-client-java:0.2.15")
 
