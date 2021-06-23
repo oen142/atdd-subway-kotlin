@@ -6,20 +6,20 @@ import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
+import java.lang.RuntimeException
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class AcceptanceTest(
+class AcceptanceTest {
+
     @LocalServerPort
-    val port: Int,
+    var port: Int = 0
 
     @Autowired
-    val databaseCleanup: DatabaseCleanup
+    var databaseCleanup: DatabaseCleanup? = null
 
-
-) {
     @BeforeEach
     fun setUp() {
         RestAssured.port = port
-        databaseCleanup.execute()
+        databaseCleanup?.execute() ?: throw RuntimeException("인입이 안되었습니다")
     }
 }
