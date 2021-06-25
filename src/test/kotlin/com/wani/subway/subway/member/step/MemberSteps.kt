@@ -25,4 +25,15 @@ object MemberSteps {
             .`when`().post("/members")
             .then().log().all().extract()
     }
+
+    fun `회원_조회_요청`(response: ExtractableResponse<Response>): ExtractableResponse<Response> {
+        val uri = response.header("Location")
+
+        return RestAssured
+            .given().log().all()
+            .accept(MediaType.APPLICATION_JSON_VALUE)
+            .`when`().get(uri)
+            .then().log().all()
+            .extract()
+    }
 }
