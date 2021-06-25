@@ -25,4 +25,18 @@ object MemberSteps {
             .`when`().post("/members")
             .then().log().all().extract()
     }
+
+    fun `회원_정보_요청`(email: String, password: String, age: Int): ExtractableResponse<Response> {
+        val params: MutableMap<String, String> = HashMap()
+        params["email"] = email
+        params["password"] = password
+        params["age"] = age.toString()
+
+        return RestAssured
+            .given().log().all()
+            .contentType(MediaType.APPLICATION_JSON_VALUE)
+            .body(params)
+            .`when`().post("/members")
+            .then().log().all().extract()
+    }
 }
