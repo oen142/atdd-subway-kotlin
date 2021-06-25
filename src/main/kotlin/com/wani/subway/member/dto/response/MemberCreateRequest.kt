@@ -13,6 +13,7 @@ data class MemberCreateRequest(
 
     fun toMember(): Member =
         Member(
+            id = null,
             email = email,
             password = password,
             age = age

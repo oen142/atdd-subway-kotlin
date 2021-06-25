@@ -24,4 +24,13 @@ class MemberAcceptanceTest : AcceptanceTest() {
         // 회원 생성됨
         MemberStepsAssert.회원_생성됨(response)
     }
+
+    @Test
+    fun `회원을 생성한 후에 해당하는 정보를 사용하여 회원 정보를 조회한다`() {
+        val createResponse = MemberSteps.회원_생성_요청(MemberSteps.EMAIL, MemberSteps.PASSWORD, MemberSteps.AGE)
+
+        val response = MemberSteps.회원_조회_요청(createResponse)
+
+        MemberStepsAssert.회원_정보_조회됨(response, MemberSteps.EMAIL, MemberSteps.AGE)
+    }
 }
