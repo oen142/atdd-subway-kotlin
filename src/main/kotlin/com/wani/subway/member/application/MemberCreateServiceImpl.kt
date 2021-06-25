@@ -7,16 +7,17 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-@Transactional
 class MemberCreateServiceImpl(
     val memberRepository: MemberRepository
 ) : MemberCreateService {
 
+    @Transactional
     override fun createMember(request: MemberCreateRequest): MemberCreateResponse {
         val member = request.toMember()
 
+        println("멤버 세이브 전 :  ${member.id}")
         memberRepository.save(member)
-
+        println("멤버 세이브 후 :  ${member.id}")
         return MemberCreateResponse(
             id = member.id ?: 0L,
             email = member.email,

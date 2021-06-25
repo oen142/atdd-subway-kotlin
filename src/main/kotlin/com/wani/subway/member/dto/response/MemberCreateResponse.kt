@@ -4,6 +4,4 @@ data class MemberCreateResponse(
     val id: Long,
     val email: String,
     val age: Int
-) {
-
-}
+)
